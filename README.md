@@ -1,8 +1,10 @@
 # [A dual-mode crystal structure prediction framework for fixed element sets and fixed structural prototypes]()
 
 Here, we propose a deep-learning-enabled dual-mode crystal structure prediction framework that simultaneously supports two complementary tasks: 
--predicting stable crystal structures for given elemental compositions. 
--identifying chemically viable elemental substitutions for a predefined crystal topology.
+
+- predicting stable crystal structures for given elemental compositions. 
+
+- identifying chemically viable elemental substitutions for a predefined crystal topology.
 
 ##  Prerequisites
 
