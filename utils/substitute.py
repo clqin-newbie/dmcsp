@@ -224,7 +224,9 @@ def get_substitue_prob(struct_list, config):
     return result
 
 def write_results(results, out_path):
-    outpath = Path(f"./output/{out_path}")
+    root_path = Path("./output")
+    root_path.mkdir(exist_ok=True)
+    outpath = root_path.joinpath(out_path)
     outpath.mkdir(exist_ok=True)
     spg_info = []
     relax_spg_info = []
