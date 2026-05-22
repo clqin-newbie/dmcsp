@@ -25,7 +25,7 @@ For detailed usage, please refer to prediction.ipynb
 
 ## Authors
 
-This package was primarily written by Chenglong Qin (clqin@xhu.edu.com).
+This package was primarily written by Chenglong Qin (clqin@xhu.edu.cn).
 
 ## License
 
