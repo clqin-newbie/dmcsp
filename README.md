@@ -18,14 +18,14 @@ This package requires:
 
 - [smact](https://smact.readthedocs.io/en/latest/smact.html) (optional: Required for composition screening using SMACT)
 
-- [matgl](https://matgl.ai/) (optional: Required for relaxing structures using the general atomic potential)
+- [matgl](https://matgl.ai/) (optional: Required for relaxing structures using the universal machine-learning interatomic potential)
 
 ## Usage
 For detailed usage, please refer to prediction.ipynb
 
 ## Authors
 
-This package was primarily written by Chenglong Qin (clqin@xhu.edu.cn.com).
+This package was primarily written by Chenglong Qin (clqin@xhu.edu.com).
 
 ## License
 
