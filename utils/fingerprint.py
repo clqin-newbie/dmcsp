@@ -18,45 +18,6 @@ from ase.utils import pbc2pbc
 
 # from pymatgen.core.structure 
 class OFPFingerprint:
-    """Implementation of comparison using Oganov's fingerprint (OFP)
-    functions, based on:
-
-      * :doi:`Oganov, Valle, J. Chem. Phys. 130, 104504 (2009)
-        <10.1063/1.3079326>`
-
-      * :doi:`Lyakhov, Oganov, Valle, Comp. Phys. Comm. 181 (2010) 1623-1632
-        <10.1016/j.cpc.2010.06.007>`
-
-    Parameters:
-
-    rcut: float
-        Cutoff radius in Angstrom for the fingerprints.
-        (Default 20 Angstrom)
-
-    pbc: list of three booleans or None
-         Specifies whether to apply periodic boundary conditions
-         along each of the three unit cell vectors when calculating
-         the fingerprint. The default (None) is to apply PBCs in all
-         3 directions.
-
-         Note: for isolated systems (pbc = [False, False, False]),
-         the pair correlation function itself is always short-ranged
-         (decays to zero beyond a certain radius), so unity is not
-         subtracted for calculating the fingerprint. Also the
-         volume normalization disappears.
-
-    sigma: float
-           Standard deviation of the gaussian smearing to be applied
-           in the calculation of the fingerprints (in
-           Angstrom). Default 0.02 Angstrom.
-
-    nsigma: int
-            Distance (as the number of standard deviations sigma) at
-            which the gaussian smearing is cut off (i.e. no smearing
-            beyond that distance). (Default 4)
-
-    """
-
     def __init__(self, rcut=6, tcut=6, rbinnum=100,  tbinnum=100, sigma=0.02, nsigma=4, pbc=True):
         self.rcut = rcut
         self.rbinnum = rbinnum
