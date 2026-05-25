@@ -165,7 +165,7 @@ class OFPFingerprint:
         return fingerprints, Z_dict
 
     def get_struc_fingerprints(self, atoms, angular=True, radial=True, add_r0=False, add_rel_size=False):
-        fps = self.get_fingerprints_per_atom(atoms, angular=True, radial=True, add_r0=False, add_rel_size=False)
+        fps = self.get_fingerprints_per_atom(atoms, angular, radial, add_r0, add_rel_size)
         fps = sum(fps.values()) / len(fps)
         return fps
     
@@ -186,52 +186,3 @@ class OFPFingerprint:
             fingerprints[i] = fingerprint
         return fingerprints
     
-
-def get_site_fp(df, cnnf):
-    """
-    根据提供的结构获取独特位点的指纹及元素
-    return [{'element': 56, "fp0": 0.1 ....}, {'element': 5, "fp0": 0.2 ....}]
-    """
-    id_struct, struct = df
-    data_list = []
-    data_dict = {}
-    element_list = []
-
-    # 获取每个独特site所有原子的指纹及元素序数
-    for idx, site_value in enumerate(struct.get_symmetry_dataset()['orbits']):
-        fp = cnnf.featurize(struct, idx)
-        site_value = int(site_value)
-        if data_dict.get(site_value):
-            data_dict[site_value].append(fp)
-        else:
-            data_dict[site_value] = [fp]
-            element_list.append(struct[idx].specie.Z)
-
-   # 独特site的指纹根据原子求平均
-    fp_list = []
-    for k, v in data_dict.items():
-        # print(np.mean(v, axis=0))
-        fp = np.mean(v, axis=0).tolist()
-        fp_list.append(fp)
-    
-    for element, fp in zip(element_list, fp_list):
-        d_dict = {}
-        d_dict['id'] = id_struct
-        d_dict['element'] = element
-        for i, v in enumerate(fp):
-            d_dict[f'fp{i}'] = v
-        data_list.append(d_dict)
-    return data_list
-
-
-def get_struct_fp(struct):
-    """
-    根据提供的结构获取结构的指纹
-    return [fp]
-    """
-    fp_list = []
-    # 获取每个独特site所有原子的指纹及元素序数
-    for idx in range(len(struct)):
-        fp = cnnf.featurize(struct, idx)
-        fp_list.append(fp)
-    return np.mean(fp_list, axis=0).tolist()
